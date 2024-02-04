@@ -13,14 +13,14 @@ A hostname is a name that is assigned to a computer or device on a network, and 
 To view the current hostname, run the command below:
 
 ```
-1 hostname
+hostname
 ```
 
 An *IP address* (Internet Protocol address) is a numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.
 
 You can use the **-i** option to view the IP address of the host:
 ```bash
-1 hostname -i
+hostname -i
 ```
 
 #### 1.2. Display network interface configuration
@@ -31,13 +31,13 @@ The **ifconfig** command is used to configure or display network interface param
 To display the configuration of all network interfaces of your system, enter:
 
 ```bash
-1 ifconfig
+ifconfig
 ```
 
 To display the configuration of a particular device, such as the ethernet adapter **eth0**, enter:
 
 ```bash
-1 ifconfig eth0
+ifconfig eth0
 ```
 **eth0** is usually the primary network interface that connects your server to the network.
 
@@ -50,7 +50,7 @@ You can see your server's IP address in line 2 after the word **inet**.
 Use the **ping** command to check if **www.google.com** is reachable. The command keeps pinging data packets to server at **www.google.com** and prints the response it gets back. (Press **Ctrl**+**c** to stop pinging.)
 
 ```bash
-1 ping www.google.com
+ping www.google.com
 ```
 If you want to ping only a limited number of times, use **-c** option.
 
@@ -65,12 +65,12 @@ ping -c 5 www.google.com
 You can use **curl** to access the file at the following URL and display the file's contents on your screen:
 
 ```bash
-1 curl https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
+curl https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
 ```
 To access the file at the given URL and also save it in your current working directory, use the **-O** option:
 
 ```bash
-1 curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
+curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
 ```
 You can also use **curl** to view the HTML code for any web page if you know its URL.
 
@@ -82,11 +82,11 @@ The **wget** command is similar to **curl**, however its primary use is for file
 To see wget in action, first remove **usdoi.txt** from your current directory:
 
 ```bash
-1 rm usdoi.txt
+rm usdoi.txt
 ```
 
 then download it again using **wget** as follows:
 
 ```bash
-1 wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
+wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
 ```
