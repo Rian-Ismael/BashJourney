@@ -12,7 +12,7 @@ A hostname is a name that is assigned to a computer or device on a network, and 
 
 To view the current hostname, run the command below:
 
-```bash
+```
 1 hostname
 ```
 
