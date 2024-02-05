@@ -174,3 +174,8 @@ grep -oE "\"price\"\s*:\s*[0-9]*?\.[0-9]*"
 - [0-9]* matches any number of digits (from 0 to 9)
 - ?\. optionally matches a .
 
+Use the cat command to get the output of the JSON file and pipe it with the grep command to get the required output.
+
+```bash
+cat Bitcoinprice.txt | grep -oE "\"price\"\s*:\s*[0-9]*?\.[0-9]*"
+```
