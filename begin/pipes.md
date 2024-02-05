@@ -125,3 +125,52 @@ DOG
 GOLDFISH
 PARROT
 ```
+
+## Extracting information from JSON files:
+
+Let's see how you can use this json file to get the current price of Bitcoin (BTC) in USD, by using grep command.
+
+```bash
+{
+  "coin": {
+    "id": "bitcoin",
+    "icon": "https://static.coinstats.app/coins/Bitcoin6l39t.png",
+    "name": "Bitcoin",
+    "symbol": "BTC",
+    "rank": 1,
+    "price": 57907.78008618953,
+    "priceBtc": 1,
+    "volume": 48430621052.9856,
+    "marketCap": 1093175428640.1146,
+    "availableSupply": 18877868,
+    "totalSupply": 21000000,
+    "priceChange1h": -0.19,
+    "priceChange1d": -0.4,
+    "priceChange1w": -9.36,
+    "websiteUrl": "http://www.bitcoin.org",
+    "twitterUrl": "https://twitter.com/bitcoin",
+    "exp": [
+      "https://blockchair.com/bitcoin/",
+      "https://btc.com/",
+      "https://btc.tokenview.com/"
+    ]
+  }
+}
+```
+
+Copy the above output in a file and name it as **Bitcoinprice.txt**.
+
+The JSON field you want to grab here is **"price": [numbers].[numbers]"**. To get this, you can use the following grep command to extract it from the JSON text:
+
+```bash
+grep -oE "\"price\"\s*:\s*[0-9]*?\.[0-9]*"
+```
+
+- -o tells grep to only return the matching portion
+- -E tells grep to be able to use extended regex symbols such as ?
+- \"price\" matches the string "price"
+- \s* matches any number (including 0) of whitespace (\s) characters
+- : matches :
+- [0-9]* matches any number of digits (from 0 to 9)
+- ?\. optionally matches a .
+
