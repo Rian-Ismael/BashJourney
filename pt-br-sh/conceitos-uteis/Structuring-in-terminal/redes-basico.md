@@ -1,63 +1,63 @@
-# Computer Networks
+# Redes de Computadores
 
-A computer network is a set of computers that are able to communicate with each other and share resources provided by network nodes.
+Uma rede de computadores é um conjunto de computadores capazes de se comunicar entre si e compartilhar recursos fornecidos por nós de rede.
 
-Examples of computer networks include Local Area Networks (LANs), Wide Area Networks (WANs), and the entire Internet. The Internet, or World Wide Web, is essentially a giant network of computer networks.
+Exemplos de redes de computadores incluem Redes Locais (LANs), Redes de Longa Distância (WANs) e toda a Internet. A Internet, ou World Wide Web, é essencialmente uma gigantesca rede de redes de computadores.
 
-A **network resource** is any object, such as a file or document, which can be identified by the network.
+Um **recurso de rede** é qualquer objeto, como um arquivo ou documento, que pode ser identificado pela rede.
 
-An object is identifiable if it can be assigned a unique name and address that the network can use to identify and access it.
+Um objeto é identificável se puder ser atribuído um nome único e um endereço que a rede possa usar para identificá-lo e acessá-lo.
 
-A **network node** is any device that participates in a network.
+Um **nó de rede** é qualquer dispositivo que participe de uma rede.
 
-A network can include any device which is not necessarily a computer but is part of the network’s infrastructure. Examples of network nodes include modems, network switches, hubs, and wifi hotspots.
+Uma rede pode incluir qualquer dispositivo que não seja necessariamente um computador, mas faça parte da infraestrutura da rede. Exemplos de nós de rede incluem modems, switches de rede, hubs e pontos de acesso wi-fi.
 
-## Hosts, Clients, and Servers
+## Hospedeiros, Clientes e Servidores
 
-A **host** is a special type of node in a computer network - it is a computer that can function as a server or a client on a network.
+Um **hospedeiro** é um tipo especial de nó em uma rede de computadores - é um computador que pode funcionar como servidor ou cliente em uma rede.
 
-A **server** is a host computer that is able to accept a connection from a client host and fulfill certain resource requests made by the client.
+Um **servidor** é um computador hospedeiro que é capaz de aceitar uma conexão de um hospedeiro cliente e atender a determinadas solicitações de recursos feitas pelo cliente.
 
-Many hosts can perform either role, acting as both client and server.
+Muitos hospedeiros podem desempenhar qualquer papel, atuando como cliente e servidor.
 
-## Packets and Pings
+## Pacotes e Pings
 
-A **network packet** is a formatted chunk of data that can be transmitted over a network.
+Um **pacote de rede** é um fragmento de dados formatado que pode ser transmitido por uma rede.
 
-Today's computer networks typically use communication protocols that are based on such packets of information. Every packet consists of two types of data: 
-1. The control information
-2. The payload
+As redes de computadores atuais geralmente usam protocolos de comunicação baseados em tais pacotes de informação. Cada pacote consiste em dois tipos de dados:
+1. As informações de controle
+2. A carga útil
 
-The control information is data about how and where to deliver the payload, such as the source and destination network addresses, while the payload is the message being sent.
+As informações de controle são dados sobre como e onde entregar a carga útil, como os endereços de rede de origem e destino, enquanto a carga útil é a mensagem enviada.
 
-The `ping` command works by sending special 'echo request' packets to a host and waiting for a response from the host.
+O comando `ping` funciona enviando pacotes especiais de "solicitação de eco" para um hospedeiro e aguardando uma resposta do hospedeiro.
 
-`ping` is a utility available on most operating systems that have networking capability. Linux has its own implementation of the `ping` command that's used to test and troubleshoot connectivity to other network hosts.
+O `ping` é um utilitário disponível na maioria dos sistemas operacionais que possuem capacidade de rede. O Linux tem sua própria implementação do comando `ping` que é usada para testar e solucionar problemas de conectividade com outros hospedeiros de rede.
 
-## URLs and IP Addresses
+## URLs e Endereços IP
 
-**IP** stands for "Internet Protocol" which defines the format of data transmitted over the internet or a local network.
+**IP** significa "Protocolo da Internet", que define o formato dos dados transmitidos pela internet ou por uma rede local.
 
-An **IP address** is a code used to uniquely identify any host on a network.
+Um **endereço IP** é um código usado para identificar unicamente qualquer hospedeiro em uma rede.
 
-An IP address can be used to establish a connection to a host and exchange packets with it, for example using the `ping` command. In addition to their payload, IP packets - a type of network packet that conforms to the Internet Protocol - contain the IP addresses of the source and destination hosts.
+Um endereço IP pode ser usado para estabelecer uma conexão com um hospedeiro e trocar pacotes com ele, por exemplo, usando o comando `ping`. Além de sua carga útil, os pacotes IP - um tipo de pacote de rede que se conforma ao Protocolo da Internet - contêm os endereços IP dos hospedeiros de origem e destino.
 
-A **URL**, more commonly known as a web address, stands for Uniform Resource Locator.
+Uma **URL**, mais comumente conhecida como endereço da web, significa Localizador Uniforme de Recursos.
 
-A URL uniquely identifies a web resource and enables access to that resource. Typically the resource that a URL points to is a web page, but it can also be used for tasks such as transferring files, sending emails, and accessing databases.
+Uma URL identifica exclusivamente um recurso da web e permite o acesso a esse recurso. Normalmente, o recurso ao qual uma URL aponta é uma página da web, mas também pode ser usado para tarefas como transferência de arquivos, envio de e-mails e acesso a bancos de dados.
 
-For example, the URL to the Wikipedia page for URL is [https://en.wikipedia.org/wiki/URL](https://en.wikipedia.org/wiki/URL). Just like for a typical URL, its format indicates a protocol (https), a hostname (en.wikipedia.org), and a file name (/wiki/URL).
+Por exemplo, a URL da página da Wikipedia para URL é [https://en.wikipedia.org/wiki/URL](https://en.wikipedia.org/wiki/URL). Assim como para uma URL típica, seu formato indica um protocolo (https), um nome de host (en.wikipedia.org) e um nome de arquivo (/wiki/URL).
 
-## Summary
+## Resumo
 
-In this reading, you learned that:
+Nesta leitura, você aprendeu que:
 
-- A computer network is a set of computers that are able to communicate with each other and share resources.
-- A network resource is any object, such as a file or document, which can be identified by the network.
-- A network node is any device that participates in a network.
-- A host is a computer that can function as a server or a client on a network.
-- A server is a host computer that is able to accept a connection from a client host and fulfill certain resource requests made by the client.
-- A network packet is a formatted chunk of data that can be transmitted over a network.
-- The `ping` command works by sending special 'echo request' packets to a host and waiting for a response from the host.
-- An IP address is a code used to uniquely identify any host on a network.
-- A URL identifies a web resource and enables access to that resource.
+- Uma rede de computadores é um conjunto de computadores capazes de se comunicar entre si e compartilhar recursos.
+- Um recurso de rede é qualquer objeto, como um arquivo ou documento, que pode ser identificado pela rede.
+- Um nó de rede é qualquer dispositivo que participe de uma rede.
+- Um hospedeiro é um computador que pode funcionar como servidor ou cliente em uma rede.
+- Um servidor é um computador hospedeiro que é capaz de aceitar uma conexão de um hospedeiro cliente e atender a determinadas solicitações de recursos feitas pelo cliente.
+- Um pacote de rede é um fragmento de dados formatado que pode ser transmitido por uma rede.
+- O comando `ping` funciona enviando pacotes especiais de 'solicitação de eco' para um hospedeiro e aguardando uma resposta do hospedeiro.
+- Um endereço IP é um código usado para identificar unicamente qualquer hospedeiro em uma rede.
+- Uma URL identifica um recurso da web e permite o acesso a esse recurso.

@@ -1,84 +1,84 @@
-# Shell Commands Reference
+# Referência de Comandos do Shell
 
-A shell is an interactive user interface. You use shell commands to navigate and work with files and directories.
+Um shell é uma interface de usuário interativa. Você usa comandos de shell para navegar e trabalhar com arquivos e diretórios.
 
-## File and Directory Operations
+## Operações de Arquivos e Diretórios
 
-- **List files and directories:**
-  - `ls`: Lists all files and directories within a specified directory tree.
+- **Listar arquivos e diretórios:**
+  - `ls`: Lista todos os arquivos e diretórios dentro de uma árvore de diretórios especificada.
 
-- **Navigate between directories:**
-  - `cd`: Navigates between directories.
+- **Navegar entre diretórios:**
+  - `cd`: Navega entre diretórios.
 
-- **Create files and directories:**
-  - `touch`: Creates files.
-  - `mkdir`: Creates directories.
+- **Criar arquivos e diretórios:**
+  - `touch`: Cria arquivos.
+  - `mkdir`: Cria diretórios.
 
-- **Delete files and directories:**
-  - `rm`: Deletes files.
-  - `rmdir`: Deletes directories.
+- **Excluir arquivos e diretórios:**
+  - `rm`: Exclui arquivos.
+  - `rmdir`: Exclui diretórios.
 
-- **Copy and move files and directories:**
-  - `cp`: Copies files and directories.
-  - `mv`: Moves files and directories.
+- **Copiar e mover arquivos e diretórios:**
+  - `cp`: Copia arquivos e diretórios.
+  - `mv`: Move arquivos e diretórios.
 
-- **Find files:**
-  - `find`: Finds files in your directories.
+- **Encontrar arquivos:**
+  - `find`: Encontra arquivos nos seus diretórios.
 
-## File Viewing and Manipulation
+## Visualização e Manipulação de Arquivos
 
-- **Display file contents:**
-  - `cat`: Displays file contents.
+- **Exibir conteúdo de arquivos:**
+  - `cat`: Exibe o conteúdo de arquivos.
 
-- **View specific lines of a file:**
-  - `more`, `head`, `tail`: Allow sorting and viewing of file contents.
+- **Visualizar linhas específicas de um arquivo:**
+  - `more`, `head`, `tail`: Permitem classificar e visualizar o conteúdo do arquivo.
 
-- **Count lines, words, and characters in a file:**
-  - `wc`: Determines line, word, and character counts.
+- **Contar linhas, palavras e caracteres em um arquivo:**
+  - `wc`: Determina contagens de linhas, palavras e caracteres.
 
-- **Sort and filter file contents:**
-  - `sort`: Views lines of a file alphanumerically.
-  - `uniq`: Removes repeated lines from the view.
-  - `grep`: Gets lines of a file that match specific criteria.
-  - `cut`: Extracts slices and fields from lines.
-  - `paste`: Merges lines from different files.
+- **Ordenar e filtrar conteúdo de arquivos:**
+  - `sort`: Exibe linhas de um arquivo alfanumericamente.
+  - `uniq`: Remove linhas repetidas da visualização.
+  - `grep`: Obtém linhas de um arquivo que correspondem a critérios específicos.
+  - `cut`: Extrai fatias e campos de linhas.
+  - `paste`: Funde linhas de diferentes arquivos.
 
-## System Information and Monitoring
+## Informações do Sistema e Monitoramento
 
-- **User and system information:**
-  - `whoami`, `id`: Get user information.
-  - `uname`: Get operating system information.
+- **Informações do usuário e do sistema:**
+  - `whoami`, `id`: Obtêm informações do usuário.
+  - `uname`: Obtêm informações do sistema operacional.
 
-- **System resource monitoring:**
-  - `df`: Check system disk usage.
-  - `ps`, `top`: Monitor processes and resource usage.
+- **Monitoramento de recursos do sistema:**
+  - `df`: Verifica o uso do disco do sistema.
+  - `ps`, `top`: Monitora processos e uso de recursos.
 
-- **Print and extract information:**
-  - `echo`: Print string or variable values.
-  - `date`: Print and extract information about the date.
+- **Imprimir e extrair informações:**
+  - `echo`: Imprime valores de string ou variável.
+  - `date`: Imprime e extrai informações sobre a data.
 
-- **Read command manuals:**
-  - `man`: Read the manual for any command.
+- **Ler manuais de comando:**
+  - `man`: Lê o manual para qualquer comando.
 
-## Network Operations
+## Operações de Rede
 
-- **View network configuration:**
-  - `hostname`, `ifconfig`: View network configuration.
+- **Visualizar configuração de rede:**
+  - `hostname`, `ifconfig`: Visualizam a configuração de rede.
 
-- **Test network connection:**
-  - `ping`: Test a network connection.
+- **Testar conexão de rede:**
+  - `ping`: Testa uma conexão de rede.
 
-- **Send and receive data:**
-  - `curl`, `wget`: Send and receive data.
+- **Enviar e receber dados:**
+  - `curl`, `wget`: Envia e recebe dados.
 
-## Compression and Archiving
+## Compressão e Arquivamento
 
-Compression preserves storage space, speeds data transfer, and reduces system load.
+A compressão preserva espaço de armazenamento, acelera a transferência de dados e reduz a carga do sistema.
 
-- **Compress files and folders:**
-  - `zip`: Compresses files and folders prior to archiving them.
-  - `tar`: Archives and compresses files and directories into a tarball.
+- **Comprimir arquivos e pastas:**
+  - `zip`: Comprime arquivos e pastas antes de arquivá-los.
+  - `tar`: Arquiva e comprime arquivos e diretórios em um tarball.
 
-- **Decompress and unpack archives:**
-  - `unzip`: Unpacks and decompresses a zipped archive.
-  - `tar`: Can also decompress and unpack a tar.gz archive.
+- **Descompactar e desempacotar arquivos:**
+  - `unzip`: Desempacota e descomprime um arquivo zipado.
+  - `tar`: Também pode descomprimir e desempacotar um arquivo tar.gz. archive.
