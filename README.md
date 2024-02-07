@@ -1,4 +1,5 @@
-# IBM-study-script.sh
+# Script study with bash
+
 Script study with bash
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](en-sh)
