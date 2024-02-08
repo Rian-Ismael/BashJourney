@@ -259,4 +259,3 @@ echo $sum
 - Arithmetic operators (+, -, *, /, %) are fundamental for performing basic mathematical calculations within your scripts.
 - You can create arrays, which are like lists, to store multiple values in a single variable. These arrays can then be accessed by their individual elements using indexing.
 - for loops provide a convenient way to execute a series of commands repeatedly, based on a looping index or list of values.
-
