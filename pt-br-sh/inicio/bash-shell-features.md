@@ -1,39 +1,39 @@
-# Bash Shell Features
+# Recursos do Shell Bash
 
-## Learning Objectives:
-- List examples of metacharacters
-- Use quoting to specify literal or special character meanings
-- Implement input and output redirection
-- Apply command substitution
-- Describe applications for command line arguments
+## Objetivos de Aprendizagem:
+- Listar exemplos de metacaracteres
+- Utilizar *Quoting* para especificar o significado literal ou especial de caracteres especiais
+- Implementar redirecionamento de entrada e saída
+- Aplicar substituição de comando
+- Descrever aplicações para argumentos de linha de comando
 
-## Metacharacters
+## Metacaracteres
 
-Metacharacters are characters having special meaning that the shell interprets as instructions.
+Metacaracteres são caracteres com significado especial que o shell interpreta como instruções.
 
-| Metacharacter | Meaning                                      |
+| Metacaractere | Significado                                  |
 |---------------|----------------------------------------------|
-| #             | Precedes a comment                           |
-| ;             | Command separator                            |
-| *             | Filename expansion wildcard                  |
-| ?             | Single character wildcard in filename expansion |
+| #             | Precede um comentário                        |
+| ;             | Separador de comandos                        |
+| *             | Caractere curinga para expansão de nomes de arquivos |
+| ?             | Caractere curinga para um único caractere na expansão de nomes de arquivos |
 
-## Pound #
+## Jogo da velha #
 
-The pound **#** metacharacter is used to represent comments in shell scripts or configuration files. Any text that appears after a **#** on a line is treated as a comment and is ignored by the shell.
+O metacaractere jogo da velha **#** é utilizado para representar comentários em scripts de shell ou arquivos de configuração. Qualquer texto que apareça após um **#** em uma linha é tratado como um comentário e é ignorado pelo shell.
 
 ```bash
 #!/bin/bash
 
-# This is a comment
-echo "Hello, world!"  # This is another comment
+# Esse é um comentário
+echo "Hello, world!"  # Esse é outro comentário
 ```
 
-Comments are useful for documenting your code or configuration files, providing context, and explaining the purpose of the code to other developers who may read it. It's a best practice to include comments in your code or configuration files wherever necessary to make them more readable and maintainable.
+Comentários são úteis para documentar seu código ou arquivos de configuração, fornecendo contexto e explicando o propósito do código para outros desenvolvedores que possam lê-lo. É uma prática recomendada incluir comentários em seu código ou arquivos de configuração sempre que necessário para torná-los mais legíveis e de fácil manutenção.
 
-## Semicolon ;
+## Ponto e vírgula ;
 
-The semicolon **;** metacharacter is used to separate multiple commands on a single command line. When multiple commands are separated by a semicolon, they are executed sequentially in the order they appear on the command line.
+O metacaractere ponto e vírgula **;** é utilizado para separar vários comandos em uma única linha de comando. Quando vários comandos são separados por um ponto e vírgula, eles são executados sequencialmente na ordem em que aparecem na linha de comando.
 
 ```bash
 $ echo "Hello, "; echo "world!"
@@ -41,144 +41,144 @@ Hello,
 world!
 ```
 
-As you can see from the example above, the output of each **echo** command is printed on separate lines and follows the same sequence in which the commands were specified.
+Conforme pode ser observado no exemplo acima, a saída de cada comando **echo** é impressa em linhas separadas e segue a mesma sequência na qual os comandos foram especificados.
 
-The semicolon metacharacter is useful when you need to run multiple commands sequentially on a single command line.
+O metacaractere ponto e vírgula é útil quando você precisa executar vários comandos sequencialmente em uma única linha de comando.
 
-## Asterisk *
+## Asterisco *
 
-The asterisk **'*'** metacharacter is used as a wildcard character to represent any sequence of characters, including none.
+O metacaractere asterisco **'*'** é utilizado como um caractere curinga para representar qualquer sequência de caracteres, incluindo nenhum.
 
 ```bash
 ls *.txt
 ```
 
-In this example, ***.txt** is a wildcard pattern that matches any file in the current directory with a **.txt** extension. The **ls** command lists the names of all matching files.
+Neste exemplo, ***.txt** é um padrão de caractere curinga que corresponde a qualquer arquivo no diretório atual com a extensão **.txt**. O comando **ls** lista os nomes de todos os arquivos que correspondem a esse padrão.
 
-## Question mark ?
+## Ponto de interrogação ?
 
-The question mark **?** metacharacter is used as a wildcard character to represent any single character.
+O metacaractere ponto de interrogação **?** é utilizado como um caractere curinga para representar qualquer caractere único.
 
 ```bash
 ls file?.txt
 ```
 
-In this example, **file?.txt** is a wildcard pattern that matches any **file** in the current directory with a name starting with file, followed by any single character, and ending with the **.txt** extension.
+Neste exemplo, **file?.txt** é um padrão de caractere curinga que corresponde a qualquer **file** no diretório atual com um nome que começa com "file", seguido por qualquer caractere único, e terminando com a extensão **.txt**.
 
 ## Quoting
 
-*Quoting* is a mechanism that allows you to remove the special meaning of characters, spaces, or other metacharacters in a command argument or shell script. You use quoting when you want the shell to interpret characters literally.
+*Quoting* é um mecanismo que permite remover o significado especial de caracteres, espaços ou outros metacaracteres em um argumento de comando ou script de shell. Você utiliza as aspas quando deseja que o shell interprete os caracteres literalmente.
 
-| Symbol | Meaning                                |
+| Símbolo| Significado                            |
 |--------|----------------------------------------|
-| \      | Escape metacharacter interpretation    |
-| " "    | Interpret metacharacters within string |
-| ' '    | Escape all metacharacters within string|
+| \      | Escapa a interpretação de metacaracteres |
+| " "    | Interpreta metacaracteres dentro da string |
+| ' '    | Ignora todos os metacaracteres dentro da string |
 
-## Backslash \
+## Contrabarra \
 
-The backslash character is used as an escape character. It instructs the shell to preserve the literal interpretation of special characters such as space, tab, and **$**. For example, if you have a file with spaces in its name, you can use backslashes followed by a space to handle those spaces literally:
+O caractere de barra invertida é usado como um caractere de escape. Ele instrui o shell a preservar a interpretação literal de caracteres especiais, como espaço, tab e **$**. Por exemplo, se você tem um arquivo com espaços em seu nome, você pode usar barras invertidas seguidas por um espaço para lidar com esses espaços de forma literal:
 
 ```bash
 touch file\ with\ space.txt
 ```
 
-## Double quotes " "
+## Aspas duplas " "
 
-When a string is enclosed in double quotes, most characters are interpreted literally, but metacharacters are interpreted according to their special meaning. For example, you can access variable values using the dollar **$** character:
+Quando uma string é envolvida em aspas duplas, a maioria dos caracteres é interpretada literalmente, mas os metacaracteres são interpretados de acordo com seu significado especial. Por exemplo, você pode acessar os valores de variáveis usando o caractere cifrão **$**:
 
 ```bash
 $ echo "Hello $USER"
 Hello <username>
 ```
 
-## Single quotes ' '
+## Aspas simples ' '
 
-When a string is enclosed in single quotes, all characters and metacharacters enclosed within the quotes are interpreted literally. Single quotes alter the above example to produce the following output:
+Quando uma string é envolvida em aspas simples, todos os caracteres e metacaracteres contidos dentro das aspas são interpretados literalmente. As aspas simples alteram o exemplo anterior para produzir a seguinte saída:
 
 ```bash
 $ echo 'Hello $USER'
 Hello $USER
 ```
 
-Notice that instead of printing the value of **$USER**, single quotes cause the terminal to print the string **"$USER"**.
+Observe que, em vez de imprimir o valor de **$USER**, as aspas simples fazem com que o terminal imprima a string **"$USER"** literalmente.
 
-## Input/Output redirection
+## Redirecionamento de Entrada/Saída
 
-| Symbol | Meaning                                     |
-|--------|---------------------------------------------|
-| >      | Redirect output to file, overwrite          |
-| >>     | Redirect output to file, append             |
-| 2>     | Redirect standard error to file, overwrite  |
-| 2>>    | Redirect standard error to file, append     |
-| <      | Redirect file contents to standard input    |
+| Símbolo| Significado                                                 |
+|--------|-------------------------------------------------------------|
+| >      | Redireciona a saída para um arquivo, sobrescreve            |
+| >>     | Redireciona a saída para um arquivo, anexa                  |
+| 2>     | Redireciona o erro padrão para um arquivo, sobrescreve      |
+| 2>>    | Redireciona o erro padrão para um arquivo, anexa            |
+| <      | Redireciona o conteúdo de um arquivo para a entrada padrão  |
 
-*Input/output (IO)* redirection is the process of directing the flow of data between a program and its input/output sources.
+O redirecionamento de *Entrada/Saída(ES)* é o processo de direcionar o fluxo de dados entre um programa e suas fontes de entrada/saída.
 
-By default, a program reads input from standard input, the keyboard, and writes output to standard output, the terminal. However, using IO redirection, you can redirect a program's input or output to or from a file or another program.
+Por padrão, um programa lê a entrada do teclado (entrada padrão) e escreve a saída no terminal (saída padrão). No entanto, utilizando o redirecionamento de ES, é possível redirecionar a entrada ou saída de um programa para ou de um arquivo ou outro programa.
 
-## Redirect output >
+## Redirecionar saída >
 
-This symbol is used to redirect the standard output of a command to a specified file.
+Esse símbolo é usado para redirecionar a saída padrão de um comando para um arquivo especificado.
 
-- ls > files.txt will create a file called files.txt if it doesn't exist, and write the output of the ls command to it.
+- **ls > files.txt** criará um arquivo chamado **files.txt** se não existir e escreverá a saída do comando **ls** nele.
 
-- Warning: When the file already exists, the output overwrites all of the file's contents!
+- Aviso: Quando o arquivo já existe, a saída sobrescreve todo o conteúdo do arquivo!
 
-## Redirect and append output >>
+## Redirecionar e anexar saída >>
 
-This notation is used to redirect and append the output of a command to the end of a file. For example,
+Esta notação é utilizada para redirecionar e acrescentar a saída de um comando ao final de um arquivo. Por exemplo,
 
-- **ls >> files.txt** appends the output of the **ls** command to the end of file **files.txt**, and preserves any content that already existed in the file.
+- **ls >> files.txt** acrescenta a saída do comando **ls** ao final do arquivo **files.txt**, preservando qualquer conteúdo que já existia no arquivo.
 
-## Redirect standard output 2>
+## Redirecionar erro padrão 2>
 
-This notation is used to redirect the standard error output of a command to a file. For example, if you run the ls command on a non-existing directory as follows,
+Esta notação é usada para redirecionar a saída de erro padrão de um comando para um arquivo. Por exemplo, se você executar o comando ls em um diretório que não existe da seguinte maneira,
 
-- **ls non-existent-directory 2> error.txt** the shell will create a file called **error.txt** if it doesn't exist, and redirect the error output of the **ls** command to the file.
+- **ls diretório-inexistente 2> erro.txt** o shell criará um arquivo chamado **erro.txt** se não existir e redirecionará a saída de erro do comando **ls** para o arquivo.
 
-- Warning: When the file already exists, the error message overwrites all of the file's contents!
+- Aviso: Quando o arquivo já existe, a mensagem de erro sobrescreve todo o conteúdo do arquivo!
 
-## Append standard error 2>>
+## Anexar erro padrão 2>>
 
-This symbol redirects the standard error output of a command and appends the error message to the end of a file without overwriting its contents.
+Este símbolo redireciona a saída de erro padrão de um comando e acrescenta a mensagem de erro ao final de um arquivo sem sobrescrever seu conteúdo.
 
-- **ls non-existent-directory 2>> error.txt** will append the error output of the ls command to the end of the **error.txt** file.
+- **ls diretório-inexistente 2>> erro.txt** irá acrescentar a saída de erro do comando ls ao final do arquivo **erro.txt**.
 
-## Redirect input <
+## Redirecionar entrada <
 
-This symbol is used to redirect the standard input of a command from a file or another command. For example,
+Este símbolo é usado para redirecionar a entrada padrão de um comando a partir de um arquivo ou outro comando. Por exemplo,
 
-- **sort < data.txt** will **sort** the contents of the **data.txt** file.
+- **sort < data.txt** irá ordenar o conteúdo do arquivo **data.txt**.
 
-## Command Substitution
+## Substituição de comandos
 
-*Command substitution* allows you to run command and use its output as a component of another command's argument. Command substitution is denoted by enclosing a command in either backticks (*`command`*) or using the **$()** syntax. When the encapsulate command is executed, its output is substituted in place, and it can be used as an argument within another command. This is particularly useful for automating tasks that require the use of a command's output as input for another command.
+A *substituição de comando* permite que você execute um comando e use sua saída como um componente do argumento de outro comando. A substituição de comando é indicada ao envolver um comando em crases (*`comando`*) ou usando a sintaxe **$()**. Quando o comando encapsulado é executado, sua saída é substituída no local, e pode ser usada como um argumento dentro de outro comando. Isso é particularmente útil para automatizar tarefas que exigem o uso da saída de um comando como entrada para outro comando.
 
-For example, you could store the path to your current directory in a variable by applying command substitution on the **pwd** command, then move to another directory, and finally return to your original directory by invoking the **cd** command on the variable you stored, as follows:
+Por exemplo, você poderia armazenar o caminho do seu diretório atual em uma variável aplicando a substituição de comando no comando **pwd**, depois mudar para outro diretório e, finalmente, retornar ao seu diretório original invocando o comando **cd** na variável que você armazenou, como segue:
 
 ```bash
 $ here=$(pwd)
-$ cd path_to_some_other_directory
+$ cd caminho_para_outro_diretório
 $ cd $here
 ```
 
-## Command Line Arguments
+## Argumentos de linha de comando
 
-*Command line arguments* are additional inputs that can be passed to a program when the program is run from a command line interface. These arguments are specified after the name of the program, and they can be used to modify the behavior of the program, provide input data, or provide output locations. Command line arguments are used to pass arguments to a shell script.
+*Argumentos da linha de comando* são entradas adicionais que podem ser passadas a um programa quando o programa é executado a partir de uma interface de linha de comando. Esses argumentos são especificados após o nome do programa e podem ser usados para modificar o comportamento do programa, fornecer dados de entrada ou indicar locais de saída. Argumentos da linha de comando são usados para passar argumentos a um script shell.
 
-For example, the following command provides two arguments, arg1, and arg2, that can be accessed from within your Bash script:
+Por exemplo, o seguinte comando fornece dois argumentos, arg1 e arg2, que podem ser acessados de dentro do seu script Bash:
 
 ```bash
 $ ./MyBashScript.sh arg1 arg2
 ```
 
-## Summary
+## Resumo
 
-In this reading, you learned about the following concepts:
+Nesta leitura, você aprendeu sobre os seguintes conceitos:
 
-- **Metacharacters**: Characters like #, ;, *, and ? that have special meanings in shell interpretation.
-- **Quoting**: Quoting allows you to ensure that special characters, spaces, or other metacharacters are interpreted literally by the shell.
-- **Input/Output Redirection**: Redirects a program's input or output to/from a file.
-- **Command Substitution**: Allows you to use the output of a command as an argument for another command.
-- **Command Line Arguments**: Information passed to a shell script from the command line.
+- **Metacaracteres**: Caracteres como #, ;, *, e ? que têm significados especiais na interpretação do shell.
+- **Quoting**: Quoting permite garantir que caracteres especiais, espaços ou outros metacaracteres sejam interpretados literalmente pelo shell.
+- **Redirecionamento de Entrada/Saída**: Redireciona a entrada ou saída de um programa para/de um arquivo.
+- **Substituição de Comando**: Permite que você use a saída de um comando como argumento para outro comando.
+- **Argumentos da Linha de Comando**: Informações passadas a um script de shell a partir da linha de comando.
