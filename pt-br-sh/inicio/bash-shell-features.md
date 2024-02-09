@@ -4,7 +4,7 @@
 - Listar exemplos de metacaracteres
 - Utilizar *Quoting* para especificar o significado literal ou especial de caracteres especiais
 - Implementar redirecionamento de entrada e saída
-- Aplicar substituição de comando
+- Aplicar a substituição de comandos
 - Descrever aplicações para argumentos de linha de comando
 
 ## Metacaracteres
@@ -153,7 +153,7 @@ Este símbolo é usado para redirecionar a entrada padrão de um comando a parti
 
 ## Substituição de comandos
 
-A *substituição de comando* permite que você execute um comando e use sua saída como um componente do argumento de outro comando. A substituição de comando é indicada ao envolver um comando em crases (*`comando`*) ou usando a sintaxe **$()**. Quando o comando encapsulado é executado, sua saída é substituída no local, e pode ser usada como um argumento dentro de outro comando. Isso é particularmente útil para automatizar tarefas que exigem o uso da saída de um comando como entrada para outro comando.
+A *substituição de comandos* permite que você execute um comando e use sua saída como um componente do argumento de outro comando. A substituição de comando é indicada ao envolver um comando em crases (*`comando`*) ou usando a sintaxe **$()**. Quando o comando encapsulado é executado, sua saída é substituída no local, e pode ser usada como um argumento dentro de outro comando. Isso é particularmente útil para automatizar tarefas que exigem o uso da saída de um comando como entrada para outro comando.
 
 Por exemplo, você poderia armazenar o caminho do seu diretório atual em uma variável aplicando a substituição de comando no comando **pwd**, depois mudar para outro diretório e, finalmente, retornar ao seu diretório original invocando o comando **cd** na variável que você armazenou, como segue:
 
