@@ -63,7 +63,7 @@ O metacaractere ponto de interrogação **?** é utilizado como um caractere cur
 ls file?.txt
 ```
 
-Neste exemplo, **file?.txt** é um padrão de caractere curinga que corresponde a qualquer **file** no diretório atual com um nome que começa com "file", seguido por qualquer caractere único, e terminando com a extensão **.txt**.
+Neste exemplo, **file?.txt** é um padrão de caractere curinga que corresponde a qualquer **arquivo** no diretório atual com um nome que começa com "file", seguido por qualquer caractere único, e terminando com a extensão **.txt**.
 
 ## Quoting
 
