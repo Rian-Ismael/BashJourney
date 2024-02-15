@@ -49,7 +49,8 @@ echo "${column_3[@]}"
 
 ## Exercise 3.3
 
-```#!/bin/bash
+```bash
+#!/bin/bash
 
 csv_file="./arrays_table.csv"
 
