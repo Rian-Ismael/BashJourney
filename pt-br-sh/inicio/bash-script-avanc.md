@@ -15,11 +15,11 @@ Condicionais, ou declarações if, são uma maneira de instruir um script a real
 As condicionais em scripts Bash utilizam a seguinte sintaxe if-then-else:
 
 ```bash
-if [ condição ]
+if [ condition ]
 then
-    bloco_comandos_1 
+    statement_block_1  
 else
-    bloco_comandos_2
+    statement_block_2  
 fi
 ```
 
@@ -38,9 +38,9 @@ No exemplo a seguir, a condição verifica se o número de argumentos da linha d
 ```bash
 if [[ $# == 2 ]]
 then
-  echo "número de argumentos é igual a 2"
+  echo "number of arguments is equal to 2"
 else
-  echo "número de argumentos não é igual a 2"
+  echo "number of arguments is not equal to 2"
 fi
 ```
 
@@ -57,20 +57,20 @@ Note que você só precisa de colchetes simples ao realizar comparações de str
 Você também pode incluir várias condições a serem satisfeitas usando o operador "e" **&&** ou o operador "ou" **||**. Por exemplo:
 
 ```bash
-if [ condição1 ] && [ condição2 ]
+if [ condition1 ] && [ condition2 ]
 then
-    echo "condições 1 e 2 são verdadeiras"
+    echo "conditions 1 and 2 are both true"
 else
-    echo "uma ou as duas condições são falsas"
+    echo "one or both conditions are false"
 fi
 ```
 
 ```bash
-if [ condição1 ] || [ condição2 ]
+if [ condition1 ] || [ condition2 ]
 then
-    echo "condições 1 ou 2 são verdadeiras"
+    echo "conditions 1 or 2 are true"
 else
-    echo "as duas condições são falsas"
+    echo "both conditions are false"
 fi
 ```
 
@@ -117,9 +117,9 @@ a=1
 b=2
 if [ $a -le $b ]
 then
-   echo "a é menor ou igual a b"
+   echo "a is less than or equal to b"
 else
-   echo "a não é menor ou igual a b"
+   echo "a is not less than or equal to b"
 fi
 ```
 
