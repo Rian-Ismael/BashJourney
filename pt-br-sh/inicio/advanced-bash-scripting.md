@@ -1,140 +1,140 @@
-# Advanced Bash Scripting
+# Bash scripting avançado
 
-## Learning Objectives:
+## Objetivos de aprendizado:
 
-- use conditional statements to run a set of commands only if a specified condition is true
-- apply logical operators to create true/false comparisons
-- perform basic arithmetic calculations
-- create list-like arrays and access their elements
-- implement for loops to execute operations repeatedly, based on a looping index
+- Utilizar declarações condicionais para executar um conjunto de comandos apenas se uma condição especificada for verdadeira.
+- Aplicar operadores lógicos para criar comparações verdadeiro/falso.
+- Realizar cálculos aritméticos básicos.
+- Criar arrays semelhantes a listas e acessar seus elementos.
+- Implementar loops for para executar operações repetidamente, com base em um índice de looping.
 
-## Conditionals
+## Condicionais
 
-Conditionals, or **if** statements, are a way of telling a script to do something only under a specific condition.
+Condicionais, ou declarações if, são uma maneira de instruir um script a realizar uma ação apenas sob uma condição específica.
 
-Bash script conditionals use the following `if`-`then`-`else` syntax:
+As condicionais em scripts Bash utilizam a seguinte sintaxe if-then-else:
 
 ```bash
-if [ condition ]
+if [ condição ]
 then
-    statement_block_1  
+    bloco_comandos_1 
 else
-    statement_block_2  
+    bloco_comandos_2
 fi
 ```
 
-If the **condition** is **true**, then Bash executes the statements in **statement_block_1** before exiting the conditional block of code. After exiting, it will continue to run any commands after the closing **fi**.
+Se a **condição** for **verdadeira**, o Bash executa as instruções em **bloco_comandos_1** antes de sair do bloco condicional de código. Após sair, continuará a executar quaisquer comandos após a instrução **fi**.
 
-Alternatively, if the **condition** is **false**, Bash instead runs the statements in **statement_block_2** under the **else** line, then exits the conditional block and continues to run commands after the closing **fi**.
+Alternativamente, se a **condição** for **falsa**, o Bash executa as instruções em **bloco_comandos_2** sob a linha **else**, e então sai do bloco condicional, continuando a executar comandos após a instrução **fi**.
 
-- Spaces Around Conditions: It's essential to include spaces around your conditions within the square brackets [ ]. This ensures proper parsing by Bash.
+Espaços em Torno das Condições: É essencial incluir espaços em torno de suas condições dentro dos colchetes [ ]. Isso garante uma análise correta pelo Bash.
 
-- Use of fi: Every if condition block should be followed by a corresponding fi statement to indicate the end of the condition block.
+Uso do fi: Cada bloco de condição if deve ser seguido por uma instrução fi correspondente para indicar o fim do bloco de condição.
 
-- Optional Else Block: While the else block is optional, it's recommended for clarity. If the condition evaluates to false without an else block, consider including a comment or action within the if block to indicate this outcome.
+Bloco Else Opcional: Embora o bloco else seja opcional, é recomendado para clareza. Se a condição for avaliada como falsa sem um bloco else, considere incluir um comentário ou ação dentro do bloco if para indicar esse resultado.
 
-In the following example, the condition is checking whether the number of command-line arguments read by some Bash script, **$#**, is equal to 2.
+No exemplo a seguir, a condição verifica se o número de argumentos da linha de comando lidos por algum script Bash, **$#**, é igual a 2.
 
 ```bash
 if [[ $# == 2 ]]
 then
-  echo "number of arguments is equal to 2"
+  echo "número de argumentos é igual a 2"
 else
-  echo "number of arguments is not equal to 2"
+  echo "número de argumentos não é igual a 2"
 fi
 ```
 
-Notice the use of the double square brackets, which is the syntax required for making integer comparisons in the condition **[[ $# == 2 ]]**.
+Note o uso dos colchetes duplos, que é a sintaxe necessária para realizar comparações de números inteiros na condição **[[ $# == 2 ]]**.
 
-You can also make string comparisons. For example, assume you have a variable called **string_var** that has the value **"Yes"** assigned to it. Then the following statement evaluates to **true**:
+Você também pode realizar comparações de strings. Por exemplo, suponha que você tenha uma variável chamada **string_var** com o valor **"Yes"** atribuído a ela. Então, a seguinte afirmação é avaliada como **verdadeira**:
 
 ```bash
 `[ $string_var == "Yes" ]`
 ```
 
-Notice you only need single square brackets when making string comparisons.
+Note que você só precisa de colchetes simples ao realizar comparações de strings.
 
-You can also include multiple conditions to be satified by using the "and" operator **&&** or the "or" operator **||**. For example:
+Você também pode incluir várias condições a serem satisfeitas usando o operador "e" **&&** ou o operador "ou" **||**. Por exemplo:
 
 ```bash
-if [ condition1 ] && [ condition2 ]
+if [ condição1 ] && [ condição2 ]
 then
-    echo "conditions 1 and 2 are both true"
+    echo "condições 1 e 2 são verdadeiras"
 else
-    echo "one or both conditions are false"
+    echo "uma ou as duas condições são falsas"
 fi
 ```
 
 ```bash
-if [ condition1 ] || [ condition2 ]
+if [ condição1 ] || [ condição2 ]
 then
-    echo "conditions 1 or 2 are true"
+    echo "condições 1 ou 2 são verdadeiras"
 else
-    echo "both conditions are false"
+    echo "as duas condições são falsas"
 fi
 ```
 
-## Logical operators
+## Operadores Lógicos
 
-The following logical operators can be used to compare integers within a condition in an **if** condition block.
+Os seguintes operadores lógicos podem ser usados para comparar números inteiros dentro de uma condição em um bloco de **if**.
 
-**==** : is equal to
+**==** : é igual a
 
-If a variable **a** has a value of 2, the following condition evaluates to **true**; otherwise it evalutes to **false**.
+Se uma variável **a** tiver um valor de 2, a seguinte condição é avaliada como **verdadeira**; caso contrário, é avaliada como **falsa**.
 
 ```bash
 $a == 2
 ```
 
-**!=** : is not equal to
+**!=** : não é igual a
 
-If a variable **a** has a value different from 2, the following statement evaluates to **true**. If its value is 2, then it evalutes to **false**.
+Se uma variável **a** tiver um valor diferente de 2, a seguinte afirmação é avaliada como **verdadeira**. Se o valor for 2, então é avaliada como **falsa**.
 
 ```bash
 a != 2
 ```
 
-- The ! logical negation operator changes true to false and false to true.
+- O operador de negação lógica ! altera verdadeiro para falso e falso para verdadeiro.
 
-**<=** : is less than or equal to
+**<=** : é menor ou igual a
 
-If a variable **a** has a value of 2, then the following statement evaluates to **true**:
+Se uma variável **a** tiver um valor de 2, então a seguinte afirmação é avaliada como **verdadeira**:
 
 ```bash
 a <= 3
 ```
 
-and the following statement evalutates to **false**:
+e a seguinte afirmação é avaliada como **falsa**:
 
 ```bash
 a <= 1
 ```
 
-Alternatively, you can use the equivalent notation **-le** in place of **<=**:
+Alternativamente, você pode usar a notação equivalente **-le** no lugar de **<=**:
 
 ```bash
 a=1
 b=2
 if [ $a -le $b ]
 then
-   echo "a is less than or equal to b"
+   echo "a é menor ou igual a b"
 else
-   echo "a is not less than or equal to b"
+   echo "a não é menor ou igual a b"
 fi
 ```
 
-[Advanced Bash-Scripting Guide](https://tldp.org/LDP/abs/html/comparison-ops.html)
+[Guia de bash scripting avançado](https://tldp.org/LDP/abs/html/comparison-ops.html)
 
-## Arithmetic calculations
+## Cálculos aritméticos
 
-You can perform integer addition, subtraction, multiplication, and division using the notation **$(())**.
-For example, the following two sets of commands both display the result of adding 3 and 2.
+Você pode realizar adição, subtração, multiplicação e divisão de números inteiros usando a notação **$(())**.
+Por exemplo, os dois conjuntos de comandos a seguir exibem o resultado da adição de 3 e 2.
 
 ```bash
 echo $((3+2))
 ```
 
-or
+ou
 
 ```bash
 a=3
@@ -143,69 +143,69 @@ c=$(($a+$b))
 echo $c
 ```
 
-Bash natively handles integer arithmetic but does not handle floating-point arithmetic. As a result, it will always truncate the decimal portion of a calculation result.
+O Bash lida nativamente com aritmética de números inteiros, mas não trata aritmética de ponto flutuante. Como resultado, ele sempre truncará a parte decimal do resultado de uma operação.
 
-For example:
+Por exemplo:
 
 ```bash
 echo $((3/2))
 ```
 
-prints the truncated integer result, **1**, not the floating-point number, **1.5**.
+imprime o resultado inteiro truncado, **1**, não o número de ponto flutuante, **1.5**.
 
-The following table summarizes the basic arithmetic operators:
+A tabela a seguir resume os operadores aritméticos básicos:
 
-| Symbol | Operation   |
-|--------|-------------|
-| +      | addition    |
-| -      | subtraction |
-| *      | multiplication |
-| /      | division    |
+| Símbolo | Operação     |
+|--------|---------------|
+| +      | adição        |
+| -      | subtração     |
+| *      | multiplicação |
+| /      | divisão       |
 
 ## Arrays
 
-The *array* is a Bash built-in data structure. An array is a space-delimited list contained in parentheses. To create an array, declare its name and contents:
+A *array* é uma estrutura de dados incorporada no Bash. Um array é uma lista delimitada por espaços contida entre parênteses. Para criar um array, declare seu nome e conteúdo:
 
 ```bash
 my_array=(1 2 "three" "four" 5)
 ```
 
-This statement creates and populates the array **my_array** with the items in the parentheses: 1, 2, "three", "four", and 5.
+Esta declaração cria e preenche o array **my_array** com os itens entre parênteses: 1, 2, "three", "four" e 5.
 
-You can also create an empty array by using:
+Você também pode criar um array vazio usando:
 
 ```bash
 declare -a empty_array
 ```
 
-If you want to add items to your array after creating it, you can add to your array by appending one element at a time:
+Se você quiser adicionar itens ao seu array após criá-lo, pode fazê-lo acrescentando um elemento de cada vez:
 
 ```bash
 my_array+=("six")
 my_array+=(7)
 ```
 
-This adds elements **"six"** and **7** to the array **my_array**.
+Isso adiciona os elementos **"six"** e **7** ao array **my_array**.
 
-By using indexing, you can access individual or multiple elements of an array:
+Usando indexação, você pode acessar elementos individuais ou múltiplos de um array:
 
 ```bash
-# print the first item of the array:
+# printa o primeiro item do array:
 echo ${my_array[0]}
 
-# print the third item of the array:
+# printa o terceiro item do array:
 echo ${my_array[2]}
 
-# print all array elements:
+# printa todos os elementos do array:
 echo ${my_array[@]}
 ```
-- Array indexing starts from 0, not from 1.
+- A indexação de arrays começa em 0, não em 1.
 
-## For loops
+## Loops for
 
-You can use a construct called a **for** loop along with indexing to iterate over all elements of an array.
+Você pode usar uma construção chamada loop **for** junto com indexação para iterar sobre todos os elementos de um array.
 
-For example, the following **for** loops will continue to run over and over again until every element is printed:
+Por exemplo, os seguintes loops **for** continuarão a ser executados repetidamente até que cada elemento seja impresso:
 
 ```bash
 for item in ${my_array[@]}; do
@@ -213,7 +213,7 @@ for item in ${my_array[@]}; do
 done
 ```
 
-or
+ou
 
 ```bash
 for i in ${!my_array[@]}; do
@@ -221,9 +221,9 @@ for i in ${!my_array[@]}; do
 done
 ```
 
-The **for** loop requires a **; do** component in order to cycle through the loop. Additionally, you need to terminate the **for** loop block with a **done** statement.
+O loop **for** requer um componente **; do** para iterar pelo loop. Além disso, você precisa encerrar o bloco do loop **for** com uma instrução **done**.
 
-Another way to implement a **for** loop when you know how many iterations you want is as follows. For example, the following code prints the number 0 through 6.
+Outra maneira de implementar um loop **for** quando você sabe quantas iterações deseja é a seguinte. Por exemplo, o seguinte código imprime os números de 0 a 6.
 
 ```bash
 N=6
@@ -232,30 +232,30 @@ for (( i=0; i<=$N; i++ )) ; do
 done
 ```
 
-You can use **for** loops to accomplish all sorts of things. For example, you could count the number of items in an array or sum up its elements, as the following Bash script does:
+Você pode usar loops **for** para realizar todo tipo de tarefas. Por exemplo, você poderia contar o número de itens em um array ou somar seus elementos, como o seguinte script Bash faz:
 
 ```bash
 #!/usr/bin/env bash
-# initialize array, count, and sum
+# inicializa o array, conta e soma
 my_array=(1 2 3)
 count=0
 sum=0
 for i in ${!my_array[@]}; do
-  # print the ith array element
+  # printa o elemento atual do array
   echo ${my_array[$i]}
-  # increment the count by one
+  # incrementa o contador com 1
   count=$(($count+1))
-  # add the current value of the array to the sum
+  # soma o elemento atual do array em sum
   sum=$(($sum+${my_array[$i]}))
 done
 echo $count
 echo $sum
 ```
 
-## Summary
+## Resumo
 
-- Conditional statements enable the execution of commands based on specified conditions. They are essential for controlling the flow of your script.
-- Logical operators, such as AND (&&), OR (||), and NOT (!), are used to perform true/false comparisons and combine conditions.
-- Arithmetic operators (+, -, *, /, %) are fundamental for performing basic mathematical calculations within your scripts.
-- You can create arrays, which are like lists, to store multiple values in a single variable. These arrays can then be accessed by their individual elements using indexing.
-- for loops provide a convenient way to execute a series of commands repeatedly, based on a looping index or list of values.
+- Declarações condicionais permitem a execução de comandos com base em condições especificadas. Elas são essenciais para controlar o fluxo do seu script.
+- Operadores lógicos, como E (&&), OU (||) e NÃO (!), são usados para realizar comparações verdadeiro/falso e combinar condições.
+- Operadores aritméticos (+, -, *, /, %) são fundamentais para realizar cálculos matemáticos básicos dentro dos seus scripts.
+- Você pode criar arrays, que são como listas, para armazenar múltiplos valores em uma única variável. Esses arrays podem então ser acessados por seus elementos individuais usando indexação.
+- Os loops for fornecem uma maneira conveniente de executar uma série de comandos repetidamente, com base em um índice de looping ou lista de valores.
