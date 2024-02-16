@@ -251,3 +251,11 @@ done
 echo $count
 echo $sum
 ```
+
+## Resumo
+
+- Declarações condicionais permitem a execução de comandos com base em condições especificadas. Elas são essenciais para controlar o fluxo do seu script.
+- Operadores lógicos, como E (&&), OU (||) e NÃO (!), são usados para realizar comparações verdadeiro/falso e combinar condições.
+- Operadores aritméticos (+, -, *, /, %) são fundamentais para realizar cálculos matemáticos básicos dentro dos seus scripts.
+- Você pode criar arrays, que são como listas, para armazenar múltiplos valores em uma única variável. Esses arrays podem então ser acessados por seus elementos individuais usando indexação.
+- Os loops for fornecem uma maneira conveniente de executar uma série de comandos repetidamente, com base em um índice de looping ou lista de valores.
