@@ -26,7 +26,6 @@ Com a ajuda do operador de pipe, você pode combinar esses comandos para imprimi
 
 Suponha que você tenha o arquivo pets.txt com o seguinte conteúdo:
 
-
 ```bash
 $ cat pets.txt
 goldfish
