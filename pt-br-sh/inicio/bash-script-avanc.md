@@ -253,7 +253,6 @@ echo $sum
 ```
 
 ## Resumo
-
 - Declarações condicionais permitem a execução de comandos com base em condições especificadas. Elas são essenciais para controlar o fluxo do seu script.
 - Operadores lógicos, como E (&&), OU (||) e NÃO (!), são usados para realizar comparações verdadeiro/falso e combinar condições.
 - Operadores aritméticos (+, -, *, /, %) são fundamentais para realizar cálculos matemáticos básicos dentro dos seus scripts.
