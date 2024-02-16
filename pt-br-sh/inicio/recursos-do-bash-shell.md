@@ -1,261 +1,184 @@
-# Bash scripting avançado
+# Recursos do Shell Bash
 
-## Objetivos de aprendizado:
+## Objetivos de Aprendizagem:
+- Listar exemplos de metacaracteres
+- Utilizar *Quoting* para especificar o significado literal ou especial de caracteres especiais
+- Implementar redirecionamento de entrada e saída
+- Aplicar a substituição de comandos
+- Descrever aplicações para argumentos de linha de comando
 
-- Utilizar declarações condicionais para executar um conjunto de comandos apenas se uma condição especificada for verdadeira.
-- Aplicar operadores lógicos para criar comparações verdadeiro/falso.
-- Realizar cálculos aritméticos básicos.
-- Criar arrays semelhantes a listas e acessar seus elementos.
-- Implementar loops for para executar operações repetidamente, com base em um índice de looping.
+## Metacaracteres
 
-## Condicionais
+Metacaracteres são caracteres com significado especial que o shell interpreta como instruções.
 
-Condicionais, ou declarações if, são uma maneira de instruir um script a realizar uma ação apenas sob uma condição específica.
+| Metacaractere | Significado                                  |
+|---------------|----------------------------------------------|
+| #             | Precede um comentário                        |
+| ;             | Separador de comandos                        |
+| *             | Caractere curinga para expansão de nomes de arquivos |
+| ?             | Caractere curinga para um único caractere na expansão de nomes de arquivos |
 
-As condicionais em scripts Bash utilizam a seguinte sintaxe if-then-else:
+## Jogo da velha #
+
+O metacaractere jogo da velha **#** é utilizado para representar comentários em scripts de shell ou arquivos de configuração. Qualquer texto que apareça após um **#** em uma linha é tratado como um comentário e é ignorado pelo shell.
 
 ```bash
-if [ condição ]
-then
-    bloco_comandos_1 
-else
-    bloco_comandos_2
-fi
+#!/bin/bash
+
+# Esse é um comentário
+echo "Hello, world!"  # Esse é outro comentário
 ```
 
-Se a **condição** for **verdadeira**, o Bash executa as instruções em **bloco_comandos_1** antes de sair do bloco condicional de código. Após sair, continuará a executar quaisquer comandos após a instrução **fi**.
+Comentários são úteis para documentar seu código ou arquivos de configuração, fornecendo contexto e explicando o propósito do código para outros desenvolvedores que possam lê-lo. É uma prática recomendada incluir comentários em seu código ou arquivos de configuração sempre que necessário para torná-los mais legíveis e de fácil manutenção.
 
-Alternativamente, se a **condição** for **falsa**, o Bash executa as instruções em **bloco_comandos_2** sob a linha **else**, e então sai do bloco condicional, continuando a executar comandos após a instrução **fi**.
+## Ponto e vírgula ;
 
-Espaços em Torno das Condições: É essencial incluir espaços em torno de suas condições dentro dos colchetes [ ]. Isso garante uma análise correta pelo Bash.
-
-Uso do fi: Cada bloco de condição if deve ser seguido por uma instrução fi correspondente para indicar o fim do bloco de condição.
-
-Bloco Else Opcional: Embora o bloco else seja opcional, é recomendado para clareza. Se a condição for avaliada como falsa sem um bloco else, considere incluir um comentário ou ação dentro do bloco if para indicar esse resultado.
-
-No exemplo a seguir, a condição verifica se o número de argumentos da linha de comando lidos por algum script Bash, **$#**, é igual a 2.
+O metacaractere ponto e vírgula **;** é utilizado para separar vários comandos em uma única linha de comando. Quando vários comandos são separados por um ponto e vírgula, eles são executados sequencialmente na ordem em que aparecem na linha de comando.
 
 ```bash
-if [[ $# == 2 ]]
-then
-  echo "número de argumentos é igual a 2"
-else
-  echo "número de argumentos não é igual a 2"
-fi
+$ echo "Hello, "; echo "world!"
+Hello,
+world!
 ```
 
-Note o uso dos colchetes duplos, que é a sintaxe necessária para realizar comparações de números inteiros na condição **[[ $# == 2 ]]**.
+Conforme pode ser observado no exemplo acima, a saída de cada comando **echo** é impressa em linhas separadas e segue a mesma sequência na qual os comandos foram especificados.
 
-Você também pode realizar comparações de strings. Por exemplo, suponha que você tenha uma variável chamada **string_var** com o valor **"Yes"** atribuído a ela. Então, a seguinte afirmação é avaliada como **verdadeira**:
+O metacaractere ponto e vírgula é útil quando você precisa executar vários comandos sequencialmente em uma única linha de comando.
+
+## Asterisco *
+
+O metacaractere asterisco **'*'** é utilizado como um caractere curinga para representar qualquer sequência de caracteres, incluindo nenhum.
 
 ```bash
-`[ $string_var == "Yes" ]`
+ls *.txt
 ```
 
-Note que você só precisa de colchetes simples ao realizar comparações de strings.
+Neste exemplo, ***.txt** é um padrão de caractere curinga que corresponde a qualquer arquivo no diretório atual com a extensão **.txt**. O comando **ls** lista os nomes de todos os arquivos que correspondem a esse padrão.
 
-Você também pode incluir várias condições a serem satisfeitas usando o operador "e" **&&** ou o operador "ou" **||**. Por exemplo:
+## Ponto de interrogação ?
+
+O metacaractere ponto de interrogação **?** é utilizado como um caractere curinga para representar qualquer caractere único.
 
 ```bash
-if [ condição1 ] && [ condição2 ]
-then
-    echo "condições 1 e 2 são verdadeiras"
-else
-    echo "uma ou as duas condições são falsas"
-fi
+ls file?.txt
 ```
 
+Neste exemplo, **file?.txt** é um padrão de caractere curinga que corresponde a qualquer **arquivo** no diretório atual com um nome que começa com "file", seguido por qualquer caractere único, e terminando com a extensão **.txt**.
+
+## Quoting
+
+*Quoting* é um mecanismo que permite remover o significado especial de caracteres, espaços ou outros metacaracteres em um argumento de comando ou script de shell. Você utiliza as aspas quando deseja que o shell interprete os caracteres literalmente.
+
+| Símbolo| Significado                            |
+|--------|----------------------------------------|
+| \      | Escapa a interpretação de metacaracteres |
+| " "    | Interpreta metacaracteres dentro da string |
+| ' '    | Ignora todos os metacaracteres dentro da string |
+
+## Contrabarra \
+
+O caractere de barra invertida é usado como um caractere de escape. Ele instrui o shell a preservar a interpretação literal de caracteres especiais, como espaço, tab e **$**. Por exemplo, se você tem um arquivo com espaços em seu nome, você pode usar barras invertidas seguidas por um espaço para lidar com esses espaços de forma literal:
+
 ```bash
-if [ condição1 ] || [ condição2 ]
-then
-    echo "condições 1 ou 2 são verdadeiras"
-else
-    echo "as duas condições são falsas"
-fi
+touch file\ with\ space.txt
 ```
 
-## Operadores Lógicos
+## Aspas duplas " "
 
-Os seguintes operadores lógicos podem ser usados para comparar números inteiros dentro de uma condição em um bloco de **if**.
-
-**==** : é igual a
-
-Se uma variável **a** tiver um valor de 2, a seguinte condição é avaliada como **verdadeira**; caso contrário, é avaliada como **falsa**.
+Quando uma string é envolvida em aspas duplas, a maioria dos caracteres é interpretada literalmente, mas os metacaracteres são interpretados de acordo com seu significado especial. Por exemplo, você pode acessar os valores de variáveis usando o caractere cifrão **$**:
 
 ```bash
-$a == 2
+$ echo "Hello $USER"
+Hello <username>
 ```
 
-**!=** : não é igual a
+## Aspas simples ' '
 
-Se uma variável **a** tiver um valor diferente de 2, a seguinte afirmação é avaliada como **verdadeira**. Se o valor for 2, então é avaliada como **falsa**.
+Quando uma string é envolvida em aspas simples, todos os caracteres e metacaracteres contidos dentro das aspas são interpretados literalmente. As aspas simples alteram o exemplo anterior para produzir a seguinte saída:
 
 ```bash
-a != 2
+$ echo 'Hello $USER'
+Hello $USER
 ```
 
-- O operador de negação lógica ! altera verdadeiro para falso e falso para verdadeiro.
+Observe que, em vez de imprimir o valor de **$USER**, as aspas simples fazem com que o terminal imprima a string **"$USER"** literalmente.
 
-**<=** : é menor ou igual a
+## Redirecionamento de Entrada/Saída
 
-Se uma variável **a** tiver um valor de 2, então a seguinte afirmação é avaliada como **verdadeira**:
+| Símbolo| Significado                                                 |
+|--------|-------------------------------------------------------------|
+| >      | Redireciona a saída para um arquivo, sobrescreve            |
+| >>     | Redireciona a saída para um arquivo, anexa                  |
+| 2>     | Redireciona o erro padrão para um arquivo, sobrescreve      |
+| 2>>    | Redireciona o erro padrão para um arquivo, anexa            |
+| <      | Redireciona o conteúdo de um arquivo para a entrada padrão  |
+
+O redirecionamento de *Entrada/Saída(ES)* é o processo de direcionar o fluxo de dados entre um programa e suas fontes de entrada/saída.
+
+Por padrão, um programa lê a entrada do teclado (entrada padrão) e escreve a saída no terminal (saída padrão). No entanto, utilizando o redirecionamento de ES, é possível redirecionar a entrada ou saída de um programa para ou de um arquivo ou outro programa.
+
+## Redirecionar saída >
+
+Esse símbolo é usado para redirecionar a saída padrão de um comando para um arquivo especificado.
+
+- **ls > files.txt** criará um arquivo chamado **files.txt** se não existir e escreverá a saída do comando **ls** nele.
+
+- Aviso: Quando o arquivo já existe, a saída sobrescreve todo o conteúdo do arquivo!
+
+## Redirecionar e anexar saída >>
+
+Esta notação é utilizada para redirecionar e acrescentar a saída de um comando ao final de um arquivo. Por exemplo,
+
+- **ls >> files.txt** acrescenta a saída do comando **ls** ao final do arquivo **files.txt**, preservando qualquer conteúdo que já existia no arquivo.
+
+## Redirecionar erro padrão 2>
+
+Esta notação é usada para redirecionar a saída de erro padrão de um comando para um arquivo. Por exemplo, se você executar o comando ls em um diretório que não existe da seguinte maneira,
+
+- **ls diretório-inexistente 2> erro.txt** o shell criará um arquivo chamado **erro.txt** se não existir e redirecionará a saída de erro do comando **ls** para o arquivo.
+
+- Aviso: Quando o arquivo já existe, a mensagem de erro sobrescreve todo o conteúdo do arquivo!
+
+## Anexar erro padrão 2>>
+
+Este símbolo redireciona a saída de erro padrão de um comando e acrescenta a mensagem de erro ao final de um arquivo sem sobrescrever seu conteúdo.
+
+- **ls diretório-inexistente 2>> erro.txt** irá acrescentar a saída de erro do comando ls ao final do arquivo **erro.txt**.
+
+## Redirecionar entrada <
+
+Este símbolo é usado para redirecionar a entrada padrão de um comando a partir de um arquivo ou outro comando. Por exemplo,
+
+- **sort < data.txt** irá ordenar o conteúdo do arquivo **data.txt**.
+
+## Substituição de comandos
+
+A *substituição de comandos* permite que você execute um comando e use sua saída como um componente do argumento de outro comando. A substituição de comando é indicada ao envolver um comando em crases (*`comando`*) ou usando a sintaxe **$()**. Quando o comando encapsulado é executado, sua saída é substituída no local, e pode ser usada como um argumento dentro de outro comando. Isso é particularmente útil para automatizar tarefas que exigem o uso da saída de um comando como entrada para outro comando.
+
+Por exemplo, você poderia armazenar o caminho do seu diretório atual em uma variável aplicando a substituição de comando no comando **pwd**, depois mudar para outro diretório e, finalmente, retornar ao seu diretório original invocando o comando **cd** na variável que você armazenou, como segue:
 
 ```bash
-a <= 3
+$ here=$(pwd)
+$ cd caminho_para_outro_diretório
+$ cd $here
 ```
 
-e a seguinte afirmação é avaliada como **falsa**:
+## Argumentos de linha de comando
+
+*Argumentos da linha de comando* são entradas adicionais que podem ser passadas a um programa quando o programa é executado a partir de uma interface de linha de comando. Esses argumentos são especificados após o nome do programa e podem ser usados para modificar o comportamento do programa, fornecer dados de entrada ou indicar locais de saída. Argumentos da linha de comando são usados para passar argumentos a um script shell.
+
+Por exemplo, o seguinte comando fornece dois argumentos, arg1 e arg2, que podem ser acessados de dentro do seu script Bash:
 
 ```bash
-a <= 1
-```
-
-Alternativamente, você pode usar a notação equivalente **-le** no lugar de **<=**:
-
-```bash
-a=1
-b=2
-if [ $a -le $b ]
-then
-   echo "a é menor ou igual a b"
-else
-   echo "a não é menor ou igual a b"
-fi
-```
-
-[Guia de bash scripting avançado](https://tldp.org/LDP/abs/html/comparison-ops.html)
-
-## Cálculos aritméticos
-
-Você pode realizar adição, subtração, multiplicação e divisão de números inteiros usando a notação **$(())**.
-Por exemplo, os dois conjuntos de comandos a seguir exibem o resultado da adição de 3 e 2.
-
-```bash
-echo $((3+2))
-```
-
-ou
-
-```bash
-a=3
-b=2
-c=$(($a+$b))
-echo $c
-```
-
-O Bash lida nativamente com aritmética de números inteiros, mas não trata aritmética de ponto flutuante. Como resultado, ele sempre truncará a parte decimal do resultado de uma operação.
-
-Por exemplo:
-
-```bash
-echo $((3/2))
-```
-
-imprime o resultado inteiro truncado, **1**, não o número de ponto flutuante, **1.5**.
-
-A tabela a seguir resume os operadores aritméticos básicos:
-
-| Símbolo | Operação     |
-|--------|---------------|
-| +      | adição        |
-| -      | subtração     |
-| *      | multiplicação |
-| /      | divisão       |
-
-## Arrays
-
-A *array* é uma estrutura de dados incorporada no Bash. Um array é uma lista delimitada por espaços contida entre parênteses. Para criar um array, declare seu nome e conteúdo:
-
-```bash
-my_array=(1 2 "three" "four" 5)
-```
-
-Esta declaração cria e preenche o array **my_array** com os itens entre parênteses: 1, 2, "three", "four" e 5.
-
-Você também pode criar um array vazio usando:
-
-```bash
-declare -a empty_array
-```
-
-Se você quiser adicionar itens ao seu array após criá-lo, pode fazê-lo acrescentando um elemento de cada vez:
-
-```bash
-my_array+=("six")
-my_array+=(7)
-```
-
-Isso adiciona os elementos **"six"** e **7** ao array **my_array**.
-
-Usando indexação, você pode acessar elementos individuais ou múltiplos de um array:
-
-```bash
-# printa o primeiro item do array:
-echo ${my_array[0]}
-
-# printa o terceiro item do array:
-echo ${my_array[2]}
-
-# printa todos os elementos do array:
-echo ${my_array[@]}
-```
-- A indexação de arrays começa em 0, não em 1.
-
-## Loops for
-
-Você pode usar uma construção chamada loop **for** junto com indexação para iterar sobre todos os elementos de um array.
-
-Por exemplo, os seguintes loops **for** continuarão a ser executados repetidamente até que cada elemento seja impresso:
-
-```bash
-for item in ${my_array[@]}; do
-  echo $item
-done
-```
-
-ou
-
-```bash
-for i in ${!my_array[@]}; do
-  echo ${my_array[$i]}
-done
-```
-
-O loop **for** requer um componente **; do** para iterar pelo loop. Além disso, você precisa encerrar o bloco do loop **for** com uma instrução **done**.
-
-Outra maneira de implementar um loop **for** quando você sabe quantas iterações deseja é a seguinte. Por exemplo, o seguinte código imprime os números de 0 a 6.
-
-```bash
-N=6
-for (( i=0; i<=$N; i++ )) ; do
-  echo $i
-done
-```
-
-Você pode usar loops **for** para realizar todo tipo de tarefas. Por exemplo, você poderia contar o número de itens em um array ou somar seus elementos, como o seguinte script Bash faz:
-
-```bash
-#!/usr/bin/env bash
-# inicializa o array, conta e soma
-my_array=(1 2 3)
-count=0
-sum=0
-for i in ${!my_array[@]}; do
-  # printa o elemento atual do array
-  echo ${my_array[$i]}
-  # incrementa o contador com 1
-  count=$(($count+1))
-  # soma o elemento atual do array em sum
-  sum=$(($sum+${my_array[$i]}))
-done
-echo $count
-echo $sum
+$ ./MyBashScript.sh arg1 arg2
 ```
 
 ## Resumo
 
-- Declarações condicionais permitem a execução de comandos com base em condições especificadas. Elas são essenciais para controlar o fluxo do seu script.
-- Operadores lógicos, como E (&&), OU (||) e NÃO (!), são usados para realizar comparações verdadeiro/falso e combinar condições.
-- Operadores aritméticos (+, -, *, /, %) são fundamentais para realizar cálculos matemáticos básicos dentro dos seus scripts.
-- Você pode criar arrays, que são como listas, para armazenar múltiplos valores em uma única variável. Esses arrays podem então ser acessados por seus elementos individuais usando indexação.
-- Os loops for fornecem uma maneira conveniente de executar uma série de comandos repetidamente, com base em um índice de looping ou lista de valores.
+Nesta leitura, você aprendeu sobre os seguintes conceitos:
+
+- **Metacaracteres**: Caracteres como #, ;, *, e ? que têm significados especiais na interpretação do shell.
+- **Quoting**: Quoting permite garantir que caracteres especiais, espaços ou outros metacaracteres sejam interpretados literalmente pelo shell.
+- **Redirecionamento de Entrada/Saída**: Redireciona a entrada ou saída de um programa para/de um arquivo.
+- **Substituição de Comando**: Permite que você use a saída de um comando como argumento para outro comando.
+- **Argumentos da Linha de Comando**: Informações passadas a um script de shell a partir da linha de comando.
