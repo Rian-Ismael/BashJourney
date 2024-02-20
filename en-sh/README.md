@@ -5,11 +5,11 @@ The purpose of this repository is to provide an environment where users can lear
 ## Table of Contents
 
 - Getting Started
-    - [Shebang line](<en-sh\begin\shebang-line.md>)
-    - [Shell Variables](<en-sh\begin\shell-variables .md>)
-    - [Pipes](<en-sh\begin\pipes.md>)
-    - [Shell Features](<en-sh\begin\bash-shell-features.md>)
-    - [Advancing in the Bash Shell ](<en-sh\begin\advanced-bash-scripting.md>)
+    - [Shebang line](</en-sh\begin\shebang-line.md>)
+    - [Shell Variables](</en-sh\begin\shell-variables .md>)
+    - [Pipes](</en-sh\begin\pipes.md>)
+    - [Shell Features](</en-sh\begin\bash-shell-features.md>)
+    - [Advancing in the Bash Shell ](</en-sh\begin\advanced-bash-scripting.md>)
 
 - Useful Concepts
     - ...
