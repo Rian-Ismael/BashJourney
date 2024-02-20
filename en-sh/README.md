@@ -5,19 +5,17 @@ The purpose of this repository is to provide an environment where users can lear
 ## Table of Contents
 
 - Getting Started
-    - [Shebang line](link-shebang_line-readme)
-    - [Variables](link-variables-readme)
-    - [Conditionals](link-conditionals-readme)
-    - [Loops](link-loops-readme)
-    - [Functions](link-functions-readme)
-    - [Pipes](link-pipes-readme)
-    - [Advanced bash scripting](link-advanced_bash-readme)
+    - [Shebang line](<en-sh\begin\shebang-line.md>)
+    - [Shell Variables](<en-sh\begin\shell-variables .md>)
+    - [Pipes](<en-sh\begin\pipes.md>)
+    - [Shell Features](<en-sh\begin\bash-shell-features.md>)
+    - [Advancing in the Bash Shell ](<en-sh\begin\advanced-bash-scripting.md>)
 
 - Useful Concepts
     - ...
     - ...
     - ...
-    
+
 - Exercises
     - ...
     - ...

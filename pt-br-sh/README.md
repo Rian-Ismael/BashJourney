@@ -5,19 +5,17 @@ O objetivo deste repositório é fornecer um ambiente no qual os usuários possa
 ## Tabela de conteúdos
 
 - Início
-    - [Shebang line](link-shebang_line-readme)
-    - [Variáveis](link-variavies-readme)
-    - [Condicionais](link-condicionais-readme)
-    - [Laços](link-lacos-readme)
-    - [Funções](link-funcoes-readme)
-    - [Pipes](link-pipes-readme)
-    - [Scripts avançados](link-scripts_avancados-readme)
+    - [Shebang line](<pt-br-sh\inicio\shebang-line.md>)
+    - [Variáveis de Shell](<pt-br-sh\inicio\shell-variables .md>)
+    - [Pipes](<pt-br-sh\inicio\pipes.md>)
+    - [Recursos do Shell](<pt-br-sh\inicio\bash-shell-recursos.md>)
+    - [Avançando no Bash Shell](<pt-br-sh\inicio\bash-script-avanc.md>)
 
 - Conceitos úteis
     - ...
     - ...
     - ...
-    
+
 - Questões
     - ...
     - ...
