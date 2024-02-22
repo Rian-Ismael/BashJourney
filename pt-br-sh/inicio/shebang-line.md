@@ -23,7 +23,7 @@ Abra o arquivo e adicione a seguinte linha no início do script:
 O script deve parecer agora como o seguinte:
 
 <p align="center">
-  <img src="resources\greet.sh.png" alt="code.sh">
+  <img src="/resources\greet.sh.png" alt="code.sh">
 </p>
 
 ## Verifique as permissões do script
