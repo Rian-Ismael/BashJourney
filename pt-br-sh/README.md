@@ -13,12 +13,14 @@ O objetivo deste repositório é fornecer um ambiente no qual os usuários possa
 
 
 - Conceitos úteis
-    - ...
-    - ...
-    - ...
+    - [Comandos Básicos de Redes](/pt-br-sh/conceitos-uteis/Structuring-in-terminal/comandos-basicos-de-rede.md)
+    - [Básico de Redes](/pt-br-sh/conceitos-uteis/Structuring-in-terminal/redes-basico.md)
+    - [Compactação e Arquivamento](/pt-br-sh/conceitos-uteis/Structuring-in-terminal/compactacao-e-arquivamento-de-arquivos.md)
+    - [Dicas](/pt-br-sh/conceitos-uteis/Structuring-in-terminal/dicas.md)
+    - [Resumo](/pt-br-sh/conceitos-uteis/Structuring-in-terminal/resumo.md)
 
-- Questões
-    - ...
+- Exercícios
+    - 
     - ...
 
 
