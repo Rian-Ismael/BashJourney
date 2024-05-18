@@ -1,0 +1,214 @@
+# Module 3 Cheat Sheet - Introduction to Shell Scripting
+
+## Bash Shebang
+```bash
+#!/bin/bash
+```
+
+## Finding Command Paths
+```bash
+which bash
+```
+
+## Pipes, Filters, and Chaining
+
+### Chain filter commands with a pipe:
+```bash
+ls | sort -r
+```
+
+### Display the first 20 lines of the manual page for `ls`:
+```bash
+man ls | head -20
+```
+
+### Extract a column from a CSV and remove duplicates:
+```bash
+cut -d "," -f1 names.csv | sort | uniq
+```
+
+## Shell and Environment Variables
+
+### List all shell variables:
+```bash
+set
+```
+
+### Define a shell variable:
+```bash
+my_planet=Earth
+```
+
+### Display the value of a shell variable:
+```bash
+echo $my_planet
+```
+
+### Read user input into a variable:
+```bash
+read first_name
+```
+*Tip: The entered text will be stored in `first_name`.*
+
+### List all environment variables:
+```bash
+env
+```
+
+### Define environment variables:
+```bash
+export my_planet
+export my_galaxy='Milky Way'
+```
+
+## Metacharacters
+
+### Comments:
+```bash
+# This is a comment
+```
+
+### Command separator:
+```bash
+echo 'here are some files and folders'; ls
+```
+
+### Wildcards:
+```bash
+ls *.json
+```bash
+ls file_2021-06-??.json
+```
+
+## Quoting
+
+### Single quotes (literal interpretation):
+```bash
+echo 'My home directory can be accessed by entering: echo $HOME'
+```
+
+### Double quotes (interpret metacharacters):
+```bash
+echo "My home directory is $HOME"
+```
+
+### Backslash (escape metacharacters):
+```bash
+echo "This dollar sign should render: \$"
+```
+
+## I/O Redirection
+
+### Redirect output to a file:
+```bash
+echo 'Write this text to file x' > x
+```
+
+### Append output to a file:
+```bash
+echo 'Add this line to file x' >> x
+```
+
+### Redirect standard error to a file:
+```bash
+bad_command_1 2> error.log
+```
+
+### Append standard error to a file:
+```bash
+bad_command_2 2>> error.log
+```
+
+### Redirect file contents to standard input:
+```bash
+tr “[a-z]” “[A-Z]” < a_text_file.txt
+```
+
+### Equivalent pipeline:
+```bash
+cat a_text_file.txt | tr “[a-z]” “[A-Z]”
+```
+
+## Command Substitution
+
+### Capture and echo the output of a command:
+```bash
+THE_PRESENT=$(date)
+echo "There is no time like $THE_PRESENT"
+```
+
+### Inline command substitution:
+```bash
+echo "There is no time like $(date)"
+```
+
+## Command Line Arguments
+```bash
+./My_Bash_Script.sh arg1 arg2 arg3
+```
+
+## Batch vs. Concurrent Modes
+
+### Run commands sequentially:
+```bash
+start=$(date); ./MyBigScript.sh ; end=$(date)
+```
+
+### Run commands in parallel:
+```bash
+./ETL_chunk_one_on_these_nodes.sh  & ./ETL_chunk_two_on_those_nodes.sh
+```
+
+## Scheduling Jobs with Cron
+
+### Open crontab editor:
+```bash
+crontab -e
+```
+
+### Job scheduling syntax:
+```bash
+m  h  dom  mon  dow   command
+```
+*Tip: Use `*` to mean "any".*
+
+### Example Cron Jobs
+
+#### Append the date/time to a file every Sunday at 6:15 PM:
+```bash
+15 18 * * 0 date >> sundays.txt
+```
+
+#### Run a shell script at the first minute of the first day of each month:
+```bash
+1 0 1 * * ./My_Shell_Script.sh
+```
+
+#### Back up home directory every Monday at 3:00 AM:
+```bash
+0 3 * * 1 tar -cvf my_backup_path/my_archive.tar.gz $HOME
+```
+
+### Deploy your cron job:
+1. Close the crontab editor and save the file.
+
+### List all cron jobs:
+```bash
+crontab -l
+```
+
+## Conditionals
+
+### If-then-else syntax:
+```bash
+if [[ $# == 2 ]]
+then
+  echo "number of arguments is equal to 2"
+else
+  echo "number of arguments is not equal to 2"
+fi
+```
+
+### 'And' operator:
+```bash
+if [ condition1 ] &&

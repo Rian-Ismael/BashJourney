@@ -121,5 +121,3 @@ To remove the current crontab, use the `-r` option. This command deletes all you
     ```
 
 If the crontab has been successfully removed, the output of the verification command will typically indicate that there are no crontab entries.
-
-
