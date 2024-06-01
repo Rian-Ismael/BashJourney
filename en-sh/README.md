@@ -19,7 +19,7 @@ The purpose of this repository is to provide an environment where users can lear
     - [Summary](/en-sh/useful-concepts/Structuring-in-terminal/Summary.md)
 
 - Exercises
-    - Advanced Bash Shell
+    - Advancing on Bash Shell
         - [Using conditional statements and logical operators](/en-sh/exercise-bash/questions/advanced-bash-shell/exercise-1.md)
         - [Performing basic mathematical calculations and numerical logical comparisons](/en-sh/exercise-bash/questions/advanced-bash-shell/exercise-2.md)
         - [Using arrays for storing and accessing data within for loops](/en-sh/exercise-bash/questions/advanced-bash-shell/exercise-3.md)
